@@ -6,7 +6,7 @@ const Hero = () => {
     >
       <div className="px-3 sm:px-6 py-6 bg-white w-full mx-4 sm:w-[60%] space-y-6 text-center">
         <h1 className="font-poppins font-medium text-3xl sm:text-[40px] leading-10 sm:leading-[57px] text-[#1D252C]">
-          The nature Candle
+          The Quick Mart
         </h1>
         <p className="text-[#1D252C] text-base sm:text-[18px] leading-[25px]">
           Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam
