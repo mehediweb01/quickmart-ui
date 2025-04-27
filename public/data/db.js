@@ -36,3 +36,27 @@ export const productsData = [
     price: 100,
   },
 ];
+
+export const testimonialsData = [
+  {
+    id: 1,
+    image: "/images/user-profile.png",
+    rating: 5,
+    title: "I love it!",
+    name: "mehedi",
+  },
+  {
+    id: 2,
+    image: "/images/user-profile.png",
+    rating: 3,
+    title: "Recommended for everyone",
+    name: "hasan",
+  },
+  {
+    id: 3,
+    image: "/images/user-profile.png",
+    rating: 4,
+    title: "Looks is very nice!",
+    name: "luisa",
+  },
+];
