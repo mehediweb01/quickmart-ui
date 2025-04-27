@@ -60,3 +60,21 @@ export const testimonialsData = [
     name: "luisa",
   },
 ];
+
+export const footerData = [
+  {
+    id: 1,
+    title: "Discovery",
+    link: ["New Season", "Most searched", "Most Selected"],
+  },
+  {
+    id: 2,
+    title: "About",
+    link: ["Help", "Shipping"],
+  },
+  {
+    id: 3,
+    title: "Info",
+    link: ["Contact us", "Privacy Policy", "Terms & Conditions"],
+  },
+];
