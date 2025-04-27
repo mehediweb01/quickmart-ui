@@ -78,3 +78,9 @@ export const footerData = [
     link: ["Contact us", "Privacy Policy", "Terms & Conditions"],
   },
 ];
+
+export const totalProductAdded = [
+  {
+    count: 0,
+  },
+];

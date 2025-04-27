@@ -1,4 +1,5 @@
 "use client";
+import { useCart } from "@/context/cartContext";
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
@@ -7,6 +8,8 @@ import { IoCartOutline, IoClose, IoMenu } from "react-icons/io5";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { count } = useCart();
+
   return (
     <div className="flex justify-around items-center gap-4 p-2 shadow-md rounded-sm ">
       {/* mobile screen menu */}
@@ -52,8 +55,11 @@ const Navbar = () => {
         <Link href="/">
           <CiUser className="text-2xl" />
         </Link>
-        <Link href="/cart">
+        <Link href="/cart" className="relative">
           <IoCartOutline className="text-2xl" />
+          <span className="absolute top-[-10px] right-[-10px] bg-cyan-400 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
+            {count}
+          </span>
         </Link>
       </div>
 

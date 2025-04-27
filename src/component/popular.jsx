@@ -14,7 +14,7 @@ const Popular = () => {
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mx-4 mt-12 ">
         {productsData.slice(1, 5).map((product) => (
           <Link
-            href="/"
+            href={`/products/${product.id}`}
             key={product.id}
             className="shadow-sm shadow-black px-4 py-2 rounded-md flex flex-col justify-center items-center gap-3 hover:shadow-md hover:shadow-black transition-all duration-300"
           >

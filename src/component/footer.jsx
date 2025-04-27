@@ -1,8 +1,15 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import { footerData } from "../../public/data/db";
+import { useEffect, useState } from "react";
 
 const Footer = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("/api/footer")
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, []);
   return (
     <div className="bg-black/90 px-4 py-8 ">
       <div className="flex md:flex-row flex-col justify-around items-center gap-4  border-t border-slate-100 rounded-md">
@@ -20,7 +27,7 @@ const Footer = () => {
         </div>
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 pt-16">
-          {footerData.map((data) => (
+          {data.map((data) => (
             <div key={data.id}>
               <h1 className="text-green-500 font-semibold tracking-[2px] text-base sm:text-xl font-roboto">
                 {data.title}

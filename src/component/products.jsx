@@ -1,8 +1,15 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
-import { productsData } from "../../public/data/db";
+import { useEffect, useState } from "react";
 
 const Products = () => {
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch("/api/products")
+      .then((res) => res.json())
+      .then((data) => setData(data));
+  }, []);
   return (
     <div className="py-16">
       <h1 className="font-poppins font-medium text-3xl sm:text-[40px] leading-10 sm:leading-[57px] text-[#1D252C] text-center">
@@ -12,9 +19,9 @@ const Products = () => {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
       </p>
       <div className="w-full sm:w-[70%] mx-2 sm:mx-auto my-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 ">
-        {productsData.map((product) => (
+        {data.map((product) => (
           <Link
-            href="/"
+            href={`/products/${product.id}`}
             key={product.id}
             className="shadow-sm shadow-black px-4 py-2 rounded-md flex flex-col justify-center items-center gap-3 hover:shadow-md hover:shadow-black transition-all duration-300"
           >
