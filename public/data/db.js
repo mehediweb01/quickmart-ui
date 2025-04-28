@@ -83,4 +83,7 @@ export const totalProductAdded = [
   {
     count: 0,
   },
+  {
+    quantity: 1,
+  },
 ];

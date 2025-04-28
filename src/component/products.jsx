@@ -19,17 +19,17 @@ const Products = () => {
         Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
       </p>
       <div className="w-full sm:w-[70%] mx-2 sm:mx-auto my-12 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 ">
-        {data.map((product) => (
+        {data.map((product, i) => (
           <Link
+            key={i}
             href={`/products/${product.id}`}
-            key={product.id}
             className="shadow-sm shadow-black px-4 py-2 rounded-md flex flex-col justify-center items-center gap-3 hover:shadow-md hover:shadow-black transition-all duration-300"
           >
             <Image
               src={product.image}
-              alt={product.title}
               width={90}
               height={90}
+              alt="product image"
               className="rounded-md shadow-sm shadow-black object-cover"
             />
             <h1 className="font-poppins font-medium text-2xl">

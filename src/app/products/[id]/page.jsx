@@ -8,9 +8,13 @@ import { FaCartPlus, FaShippingFast } from "react-icons/fa";
 
 const Product = () => {
   const [product, setProduct] = useState(null);
-  const [quantity, setQuantity] = useState(1);
-  const { incrementCount } = useCart();
-
+  const {
+    incrementCount,
+    addToCart,
+    cartItems,
+    increaseQuantity,
+    decreaseQuantity,
+  } = useCart();
   const { id } = useParams();
 
   useEffect(() => {
@@ -19,8 +23,9 @@ const Product = () => {
       .then((data) => setProduct(data));
   }, []);
 
-  const handleAddToCart = () => {
+  const handleAddToCart = (product) => {
     incrementCount();
+    addToCart(product);
   };
 
   if (!product)
@@ -30,9 +35,25 @@ const Product = () => {
       </div>
     );
 
+  const isProductInCart = cartItems.some((item) => item.id === product.id);
+  const productInCart = cartItems.find((item) => item.id === product.id);
+  const quantity = productInCart ? productInCart.quantity : 1;
+
+  const handleIncrease = () => {
+    if (isProductInCart) {
+      increaseQuantity(product.id);
+    }
+  };
+
+  const handleDecrease = () => {
+    if (isProductInCart && quantity > 1) {
+      decreaseQuantity(product.id);
+    }
+  };
+
   return (
     <div className="sm:py-16 py-8 px-4 min-h-screen">
-      <div className="grid grid-cols-1 sm:grid-cols-2 sm:gap-8 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:gap-8 gap-2">
         <div className="space-y-3">
           <div className="flex justify-center items-center">
             <Image
@@ -59,7 +80,7 @@ const Product = () => {
           <h1 className="font-poppins text-2xl sm:text-3xl font-semibold text-black">
             {product.title}
           </h1>
-          <div className="flex justify-between items-start gap-8">
+          <div className="flex sm:flex-row flex-col justify-between items-start gap-8">
             <div className="space-y-5">
               <p className="text-green-400 text-xl font-roboto font-semibold">
                 ${product.price}
@@ -69,7 +90,7 @@ const Product = () => {
                 <div className="border-[1px] border-slate-300 rounded-md flex items-center">
                   <button
                     type="button"
-                    onClick={() => setQuantity(quantity + 1)}
+                    onClick={handleIncrease}
                     className="px-1 py-1 hover:bg-slate-300 text-black transition-all duration-200 text-xl cursor-pointer"
                   >
                     +
@@ -80,7 +101,7 @@ const Product = () => {
                   <button
                     type="button"
                     disabled={quantity <= 0}
-                    onClick={() => setQuantity(quantity - 1)}
+                    onClick={handleDecrease}
                     className="px-1 py-1 hover:bg-slate-300 text-black transition-all duration-200 text-xl cursor-pointer disabled:cursor-not-allowed"
                   >
                     -
@@ -95,10 +116,10 @@ const Product = () => {
                   One time purchase
                 </span>
               </div>
-              <div className="border-[1px] border-slate-300 rounded-md px-4 py-2 space-y-3">
+              <div className="border-[1px] border-slate-300 rounded-md px-1 lg:px-4 py-2 space-y-3 w-[90%] ">
                 <div className="flex items-center gap-3">
                   <input type="checkbox" checked />
-                  <span className="font-semibold font-roboto text-xl text-black tracking-[1px]">
+                  <span className="font-semibold font-roboto text-base lg:text-xl text-black lg:tracking-[1px] tracking-tight">
                     Subscribe and delivery every
                   </span>
                   <select
@@ -118,12 +139,18 @@ const Product = () => {
                 </div>
               </div>
               <div>
+                <p className="space-x-4 font-semibold font-roboto text-xl text-black my-4">
+                  <span>Total Price</span>{" "}
+                  <span>${quantity * product.price}</span>
+                </p>
                 <button
                   type="button"
-                  onClick={handleAddToCart}
-                  className="bg-green-600 hover:bg-green-400 text-xl text-white px-4 py-2 rounded-md w-full cursor-pointer flex items-center justify-center gap-3 hover:text-gray-700 transition-all duration-300"
+                  onClick={() => handleAddToCart(product)}
+                  disabled={isProductInCart}
+                  className="bg-green-600 hover:bg-green-400 text-xl text-white px-4 py-2 rounded-md w-[90%] cursor-pointer flex items-center justify-center gap-3 hover:text-gray-700 transition-all duration-300 disabled:cursor-not-allowed"
                 >
-                  <FaCartPlus /> + Add to cart
+                  <FaCartPlus />
+                  {isProductInCart ? "All ready in cart" : "+ Add to cart"}
                 </button>
               </div>
             </div>
