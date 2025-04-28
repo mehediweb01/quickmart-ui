@@ -9,31 +9,31 @@ export const productsData = [
     id: 2,
     image: "/images/product2.png",
     title: "Elegant Wristwatch",
-    price: 100,
+    price: 650,
   },
   {
     id: 3,
     image: "/images/product3.png",
     title: "Leather Handbag",
-    price: 100,
+    price: 350,
   },
   {
     id: 4,
     image: "/images/product4.png",
     title: "Wireless Earbuds",
-    price: 100,
+    price: 140,
   },
   {
     id: 5,
     image: "/images/product5.png",
     title: "Fitness Smartwatch",
-    price: 100,
+    price: 99,
   },
   {
     id: 6,
     image: "/images/product6.jpg",
     title: "Casual Hoodie",
-    price: 100,
+    price: 90,
   },
 ];
 
@@ -82,8 +82,5 @@ export const footerData = [
 export const totalProductAdded = [
   {
     count: 0,
-  },
-  {
-    quantity: 1,
   },
 ];

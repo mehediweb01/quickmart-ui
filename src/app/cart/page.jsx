@@ -19,7 +19,7 @@ const Cart = () => {
           href={`/`}
           className="underline text-green-400 text-xl font-poppins font-medium"
         >
-          back to shipping
+          back to shopping
         </Link>
       </div>
       <div>
@@ -46,7 +46,8 @@ const Cart = () => {
             </div>
             <button
               type="button"
-              className="text-center text-xl font-semibold font-roboto bg-green-400 hover:bg-green-600 text-white px-6 py-2 rounded-md cursor-pointer transition-all duration-300 tracking-[2px]"
+              disabled
+              className="text-center text-xl font-semibold font-roboto bg-green-400 hover:bg-green-600 text-white px-6 py-2 rounded-md cursor-pointer transition-all duration-300 tracking-[2px] disabled:cursor-not-allowed disabled:opacity-45"
             >
               Check out
             </button>
