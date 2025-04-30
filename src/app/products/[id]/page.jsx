@@ -59,8 +59,9 @@ const Product = () => {
             <Image
               src={product.image}
               alt={product.title}
-              height={300}
-              width={300}
+              height={200}
+              width={200}
+              className="rounded-md shadow-sm shadow-black"
             />
           </div>
           <p className="font-poppins text-sm sm:text-base text-black/80 font-medium">
@@ -139,9 +140,11 @@ const Product = () => {
                 </div>
               </div>
               <div>
-                <p className="space-x-4 font-semibold font-roboto text-xl text-black my-4">
+                <p className="space-x-4 font-semibold font-roboto text-xl text-black my-4 border-b border-slate-500/30 rounded-lg pb-2">
                   <span>Total Price</span>{" "}
-                  <span>${quantity * product.price}</span>
+                  <span className="text-green-500 font-bold tracking-[1px] font-roboto">
+                    ${quantity * product.price}
+                  </span>
                 </p>
                 <button
                   type="button"
@@ -150,7 +153,7 @@ const Product = () => {
                   className="bg-green-600 hover:bg-green-400 text-xl text-white px-4 py-2 rounded-md w-[90%] cursor-pointer flex items-center justify-center gap-3 hover:text-gray-700 transition-all duration-300 disabled:cursor-not-allowed"
                 >
                   <FaCartPlus />
-                  {isProductInCart ? "All ready in cart" : "+ Add to cart"}
+                  {isProductInCart ? "Added to cart" : "+ Add to cart"}
                 </button>
               </div>
             </div>
