@@ -2,6 +2,7 @@
 import { useCart } from "@/context/cartContext";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { useState } from "react";
 import { CiLock, CiUser } from "react-icons/ci";
 import { FcAbout } from "react-icons/fc";
@@ -11,6 +12,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isOpenDropdownList, setIsOpenDropdownList] = useState(false);
   const { count } = useCart();
+  const pathname = usePathname();
 
   return (
     <div className="flex justify-around items-center gap-4 p-2 shadow-md rounded-sm ">
@@ -35,19 +37,31 @@ const Navbar = () => {
       <div className="items-center gap-5 md:flex hidden">
         <Link
           href="/discovery"
-          className="font-semibold text-black tracking-[1px] hover:text-cyan-400 hover:border-b hover:border-cyan-400 transition-all duration-300 font-roboto"
+          className={`font-semibold text-black tracking-[1px] hover:text-cyan-400 hover:border-b hover:border-cyan-400 transition-all duration-300 font-roboto ${
+            pathname === "/discovery"
+              ? "border-b border-cyan-400 text-cyan-500"
+              : ""
+          }`}
         >
           Discovery
         </Link>
         <Link
           href="/about"
-          className="font-semibold text-black tracking-[1px] hover:text-cyan-400 hover:border-b hover:border-cyan-400 transition-all duration-300 font-roboto"
+          className={`font-semibold text-black tracking-[1px] hover:text-cyan-400 hover:border-b hover:border-cyan-400 transition-all duration-300 font-roboto ${
+            pathname === "/about"
+              ? "border-b border-cyan-400 text-cyan-500"
+              : ""
+          }`}
         >
           About
         </Link>
         <Link
           href="/contact-us"
-          className="font-semibold text-black tracking-[1px] hover:text-cyan-400 hover:border-b hover:border-cyan-400 transition-all duration-300 font-roboto"
+          className={`font-semibold text-black tracking-[1px] hover:text-cyan-400 hover:border-b hover:border-cyan-400 transition-all duration-300 font-roboto ${
+            pathname === "/contact-us"
+              ? "border-b border-cyan-400 text-cyan-500"
+              : ""
+          }`}
         >
           Contact us
         </Link>
@@ -82,8 +96,14 @@ const Navbar = () => {
             </div>
           )}
         </button>
-        <Link href="/cart" className="relative">
-          <IoCartOutline className="text-2xl" />
+        <Link href="/cart" className={`relative`}>
+          <IoCartOutline
+            className={`text-2xl  ${
+              pathname === "/cart"
+                ? "border-b border-cyan-400 text-cyan-500"
+                : ""
+            }`}
+          />
           <span className="absolute top-[-10px] right-[-10px] bg-cyan-400 text-white text-xs w-5 h-5 flex items-center justify-center rounded-full">
             {count}
           </span>

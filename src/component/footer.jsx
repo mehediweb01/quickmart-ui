@@ -32,19 +32,16 @@ const Footer = () => {
               <h1 className="text-green-500 font-semibold tracking-[2px] text-base sm:text-xl font-roboto">
                 {data.title}
               </h1>
-              <Link
-                href="/"
-                className="flex flex-col justify-center gap-3 mt-8"
-              >
+              <div className="flex flex-col justify-center gap-3 mt-8 ">
                 {data.link.map((data, i) => (
                   <span
                     key={i}
-                    className="text-white font-roboto hover:border-b hover:border-slate-200 transition-all duration-300 hover:text-green-400"
+                    className="text-white font-roboto hover:border-b hover:border-slate-200 transition-all duration-300 hover:text-green-400 cursor-pointer"
                   >
                     {data}
                   </span>
                 ))}
-              </Link>
+              </div>
             </div>
           ))}
         </div>
