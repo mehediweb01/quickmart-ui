@@ -30,7 +30,7 @@ const Product = () => {
 
   if (!product)
     return (
-      <div className="text-center text-2xl text-black/90 font-roboto">
+      <div className="text-center text-2xl text-black/90 font-roboto h-screen flex justify-center items-center">
         Loading...
       </div>
     );

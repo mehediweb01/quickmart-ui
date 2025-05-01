@@ -76,7 +76,13 @@ const Navbar = () => {
           <CiUser className="text-2xl" />
           {isOpenDropdownList && (
             <div
-              className={`absolute right-0 bg-black/80 shadow-md rounded-md px-2 py-4 flex flex-col gap-2 w-[150px] z-50 transition-all duration-1000 top-10`}
+              className={`absolute right-0 shadow-sm shadow-white rounded-md px-2 py-4 flex flex-col gap-2 w-[150px] z-50 transition-all duration-1000 top-11 ${
+                pathname === "/contact-us"
+                  ? "bg-black"
+                  : pathname === "/cart"
+                  ? "bg-black"
+                  : "bg-black/60"
+              }`}
             >
               <p className="font-poppins font-medium text-cyan-300 text-sm hover:text-cyan-500 transition-all duration-300 w-full flex items-center gap-1">
                 <CiLock className="text-sky-500 size-4" /> Login / register
